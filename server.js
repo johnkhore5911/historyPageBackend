@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import route from "./route/userRoute.js";
 
+
 const app = express();
 app.use(bodyParser.json());
 dotenv.config();
