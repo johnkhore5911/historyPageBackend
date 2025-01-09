@@ -15,22 +15,48 @@ import User from "../model/userModel.js"
 //     }
 // }
 
+export const createABC = async (req, res) => {
+    try {
+        const { title, description } = req.body; // Extract title and description from request body
+
+        // Ensure images are uploaded and processed
+        // const imageUrls = req.images; // This array is set by the uploadMultiple middleware
+
+        // if (!imageUrls || imageUrls.length === 0) {
+        //     return res.status(400).json({ message: "No images provided" });
+        // }
+
+        // Create a new user document
+        const  newUser = new User({
+            title,
+            // Image: imageUrls,
+            description,
+        });
+
+        // Save to database
+        await newUser.save();
+
+        res.status(201).json({
+            message: "Data saved successfully",
+            data: newUser,
+        });
+    } catch (error) {
+        console.error("Error creating user:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
 export const create = async (req, res) => {
     console.log("12345");
     try {
-        const { name, email, address } = req.body;
+        const { title, description } = req.body;
+        
 
-        // Check if a user with the same email already exists
-        const userExist = await User.findOne({ email });
-        if (userExist) {
-            return res.status(400).json({ message: "User already exists." }); // Fixing typo: jason -> json
-        }
 
         // Create a new user instance
         const userData = new User({
-            name,
-            email,
-            address
+            title,
+            description
         });
 
         // Save the user to the database
@@ -82,4 +108,3 @@ export const deleteUser = async (req , res)=>{
         res.status(500).json({error:"Internal server error."});
     }
 }
-

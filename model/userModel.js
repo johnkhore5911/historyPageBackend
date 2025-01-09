@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
         required : true
     },
     Image:{
-        type : String 
+        type : [String],
+        required:true 
     },
     description:{
         type : String ,
