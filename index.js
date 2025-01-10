@@ -93,3 +93,9 @@ const connect = () => {
 connect();
 
 app.use("/api/user", route);
+
+
+app.get("/", (req, res) => {
+    res.send(`<h1>This is HOMEPAGE</h1>`);
+  });
+  
