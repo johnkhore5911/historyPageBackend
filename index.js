@@ -49,7 +49,7 @@ const app = express();
 dotenv.config();
 
 // Allow requests from specific origins
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173']; // Add your frontend ports here
+const allowedOrigins = ['http://localhost:3000','http://localhost:5173' ,'http://localhost:5174']; // Add your frontend ports here
 
 // CORS configuration
 app.use(cors({
